@@ -16,6 +16,7 @@ namespace OOP_project
         static void Main(string[] args)
         {
             //hello
+            Console.WriteLine("Hello World!\n");
         }
     }
 }
