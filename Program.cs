@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace OOP_project
 {
+    class test
+    {
+
+
+    }
     internal class Program
     {
         static void Main(string[] args)
