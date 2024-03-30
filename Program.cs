@@ -22,26 +22,32 @@ namespace OOP_Project
             Password = password;
             Balance = balance;
         }
-public void ACdeposit(decimal deamount)
+public double ACdeposit(decimal deamount)
 {
     if (deamount <= 0)
     {
         Console.WriteLine("Deposit amount faild . Must be more then 0");
     }
     else
-        balance += deamount;
+    { 
+    Balance += (double)deamount;
     Console.WriteLine(" Amount deposit succefully");
+    }
+    return Balance;
 }
 
-public void ACwithdraw(decimal wiamount)
+public double ACwithdraw(decimal wiamount)
 {
-    if(balance  <= 0)
+    if(Balance  <= 0)
     {
         Console.WriteLine("Not enough cash in your account!");
     }
     else
-        balance -= wiamount;
+    {
+    Balance -= (double)wiamount;
     Console.WriteLine("Money withdraw done succefully");
+    }
+    return Balance;
 }
 
 
