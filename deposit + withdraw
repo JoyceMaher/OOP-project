@@ -1,0 +1,32 @@
+public void ACdeposit(decimal deamount)
+{
+    if (deamount <= 0)
+    {
+        Console.WriteLine("Deposit amount faild . Must be more then 0");
+    }
+    else
+        balance += deamount;
+    Console.WriteLine(" Amount deposit succefully");
+}
+
+public void ACwithdraw(decimal wiamount)
+{
+    if(balance  <= 0)
+    {
+        Console.WriteLine("Not enough cash in your account!");
+    }
+    else
+        balance -= wiamount;
+    Console.WriteLine("Money withdraw done succefully");
+}
+
+
+main
+
+Console.WriteLine("Enter the deposit amount");
+decimal Depositcash = decimal.Parse(Console.ReadLine());
+accountnumber.ACdeposit(Depositcash);
+
+Console.WriteLine("Enter withdrawl amount");
+decimal Withdrawcash = decimal.Parse(Console.ReadLine());
+accountnumber.ACwithdraw(Withdrawcash);
