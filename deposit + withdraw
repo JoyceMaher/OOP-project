@@ -31,8 +31,8 @@ main
 
 Console.WriteLine("Enter the deposit amount");
 decimal deaamount = decimal.Parse(Console.ReadLine());
-accountnumber.ACdeposit(deamount);
+currentUser.ACdeposit(deamount);
 
 Console.WriteLine("Enter withdrawl amount");
 decimal wiamount = decimal.Parse(Console.ReadLine());
-accountnumber.ACwithdraw(wiamount);
+currentUser.ACwithdraw(wiamount);
