@@ -1,29 +1,27 @@
-public double ACdeposit(decimal deamount)
+public void ACdeposit(decimal deamount)
 {
     if (deamount <= 0)
     {
-        Console.WriteLine("Deposit amount faild . Must be more then 0");
+        Console.WriteLine("Deposit amount failed. Must be more than 0");
     }
     else
-    { 
-    Balance += (double)deamount;
-    Console.WriteLine(" Amount deposit succefully");
+    {
+        Balance += (double)deamount;
+        Console.WriteLine("Amount deposited successfully");
     }
-    return Balance;
 }
 
-public double ACwithdraw(decimal wiamount)
+public void ACwithdraw(decimal wiamount)
 {
-    if(Balance  <= 0)
+    if (Balance < (double)wiamount)
     {
         Console.WriteLine("Not enough cash in your account!");
     }
     else
     {
-    Balance -= (double)wiamount;
-    Console.WriteLine("Money withdraw done succefully");
+        Balance -= (double)wiamount;
+        Console.WriteLine("Money withdrawn successfully");
     }
-    return Balance;
 }
 
 
