@@ -22,6 +22,29 @@ namespace OOP_Project
             Password = password;
             Balance = balance;
         }
+public void ACdeposit(decimal deamount)
+{
+    if (deamount <= 0)
+    {
+        Console.WriteLine("Deposit amount faild . Must be more then 0");
+    }
+    else
+        balance += deamount;
+    Console.WriteLine(" Amount deposit succefully");
+}
+
+public void ACwithdraw(decimal wiamount)
+{
+    if(balance  <= 0)
+    {
+        Console.WriteLine("Not enough cash in your account!");
+    }
+    else
+        balance -= wiamount;
+    Console.WriteLine("Money withdraw done succefully");
+}
+
+
     }
 
     internal class Program
@@ -112,6 +135,16 @@ namespace OOP_Project
                 {
                     case 1:
                         ShowBalance(currentCustomer);
+                        break;
+                     case 2;
+                        Console.WriteLine("Enter the deposit amount");
+                        decimal deamount = decimal.Parse(Console.ReadLine());
+                        accountnumber.ACdeposit(deamount);
+                        break;
+                     case 3;
+                        Console.WriteLine("Enter withdrawl amount");
+                        decimal wiamount = decimal.Parse(Console.ReadLine());
+                        accountnumber.ACwithdraw(wiamount);
                         break;
                         //omar zawed case 2 w 3 beto3 el deposit wel withdaw mashy ? w law mesh 3aiz n3mlha b for loop w cases 2oli bas 7asetha ashal
                     default:
