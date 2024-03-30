@@ -24,9 +24,9 @@ public void ACwithdraw(decimal wiamount)
 main
 
 Console.WriteLine("Enter the deposit amount");
-decimal Depositcash = decimal.Parse(Console.ReadLine());
-accountnumber.ACdeposit(Depositcash);
+decimal deaamount = decimal.Parse(Console.ReadLine());
+accountnumber.ACdeposit(deamount);
 
 Console.WriteLine("Enter withdrawl amount");
-decimal Withdrawcash = decimal.Parse(Console.ReadLine());
-accountnumber.ACwithdraw(Withdrawcash);
+decimal wiamount = decimal.Parse(Console.ReadLine());
+accountnumber.ACwithdraw(wiamount);
