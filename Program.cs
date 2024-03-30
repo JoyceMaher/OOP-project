@@ -145,12 +145,12 @@ public double ACwithdraw(decimal wiamount)
                      case 2;
                         Console.WriteLine("Enter the deposit amount");
                         decimal deamount = decimal.Parse(Console.ReadLine());
-                        accountNumber.ACdeposit(deamount);
+                        currentUser.ACdeposit(deamount);
                         break;
                      case 3;
                         Console.WriteLine("Enter withdrawl amount");
                         decimal wiamount = decimal.Parse(Console.ReadLine());
-                        accountNumber.ACwithdraw(wiamount);
+                        currentUser.ACwithdraw(wiamount);
                         break;
                         //omar zawed case 2 w 3 beto3 el deposit wel withdaw mashy ? w law mesh 3aiz n3mlha b for loop w cases 2oli bas 7asetha ashal
                     default:
