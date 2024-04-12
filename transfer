@@ -1,0 +1,37 @@
+ public void transfer(Customer recipient, double amount)
+ {
+     if (amount <= 0)
+     {
+         Console.WriteLine("transfer amount must be more than 0.");
+     }
+     else if (Balance < amount)
+     {
+         Console.WriteLine("not enough balance to transfer.");
+     }
+     else
+     {
+         Balance -= amount;
+         recipient.Balance += amount;
+         Console.WriteLine($"Transfer ${amount} to {recipient.FirstName} {recipient.LastName} successful.");
+     }
+ }
+
+
+
+main 
+
+case 4:
+    Console.WriteLine("Enter recipient's account number:");
+    int recipientAccountNumber = int.Parse(Console.ReadLine());
+    Customer recipient = customers.FirstOrDefault(owner => owner.AccountNumber == recipientAccountNumber);//lambda expression
+    if (recipient != null)
+    {
+        Console.WriteLine("Enter transfer amount:");
+        double transferAmount = double.Parse(Console.ReadLine());
+        currentCustomer.transfer(recipient, transferAmount);
+    }
+    else
+    {
+        Console.WriteLine("Recipient account not found.");
+    }
+    break;
