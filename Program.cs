@@ -47,6 +47,23 @@ public void ACwithdraw(decimal wiamount)
         Console.WriteLine("Money withdrawn successfully");
     }
 }
+         public void transfer(Customer recipient, double amount)
+ {
+     if (amount <= 0)
+     {
+         Console.WriteLine("transfer amount must be more than 0.");
+     }
+     else if (Balance < amount)
+     {
+         Console.WriteLine("not enough balance to transfer.");
+     }
+     else
+     {
+         Balance -= amount;
+         recipient.Balance += amount;
+         Console.WriteLine($"Transfer ${amount} to {recipient.FirstName} {recipient.LastName} successful.");
+     }
+ }
 
     }
 
@@ -60,6 +77,7 @@ public void ACwithdraw(decimal wiamount)
                 Console.WriteLine("1 - Show balance");
                 Console.WriteLine("2 - Deposit credit");
                 Console.WriteLine("3 - Withdraw credit");
+                 Console.WriteLine("4 - Tranfer between accounts");
             }
 
             void ShowBalance(Customer current)
@@ -149,8 +167,23 @@ public void ACwithdraw(decimal wiamount)
                         decimal wiamount = decimal.Parse(Console.ReadLine());
                         currentUser.ACwithdraw(wiamount);
                         break;
-                        //omar zawed case 2 w 3 beto3 el deposit wel withdaw mashy ? w law mesh 3aiz n3mlha b for loop w cases 2oli bas 7asetha ashal
-                        //done by omar ;)
+                    case 4:
+                        Console.WriteLine("Enter recipient's account number:");
+                        int recipientAccountNumber = int.Parse(Console.ReadLine());
+                        Customer recipient = customers.FirstOrDefault(owner => owner.AccountNumber == recipientAccountNumber);//lambda expression
+                        if (recipient != null)
+                        {
+                            Console.WriteLine("Enter transfer amount:");
+                            double transferAmount = double.Parse(Console.ReadLine());
+                            currentCustomer.transfer(recipient, transferAmount);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Recipient account not found.");
+                        }
+                        break;
+                        //case 2 ,3 and 4 done by omar ;)
+                        //jojo add case 5 (points system).
                     default:
                         choice = 0;
                         break;
