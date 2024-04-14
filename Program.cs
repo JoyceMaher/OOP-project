@@ -34,6 +34,7 @@ namespace OOP_Project
             else
             {
                 Balance += (double)deamount;
+                Points += (double)deamount * 0.01;
                 Console.WriteLine("Amount deposited successfully");
             }
         }
