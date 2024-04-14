@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +13,7 @@ namespace OOP_Project
         public int AccountNumber { get; set; }
         public int Password { get; set; }
         public double Balance { get; set; }
+        public double Points { get; set; }
 
         public Customer(string firstName, string lastName, int accountNumber, int password, double balance)
         {
@@ -21,50 +22,68 @@ namespace OOP_Project
             AccountNumber = accountNumber;
             Password = password;
             Balance = balance;
+            Points = 0;
         }
-public void ACdeposit(decimal deamount)
-{
-    if (deamount <= 0)
-    {
-        Console.WriteLine("Deposit amount failed. Must be more than 0");
-    }
-    else
-    {
-        Balance += (double)deamount;
-        Console.WriteLine("Amount deposited successfully");
-    }
-}
 
-public void ACwithdraw(decimal wiamount)
-{
-    if (Balance < (double)wiamount)
-    {
-        Console.WriteLine("Not enough cash in your account!");
-    }
-    else
-    {
-        Balance -= (double)wiamount;
-        Console.WriteLine("Money withdrawn successfully");
-    }
-}
-         public void transfer(Customer recipient, double amount)
- {
-     if (amount <= 0)
-     {
-         Console.WriteLine("transfer amount must be more than 0.");
-     }
-     else if (Balance < amount)
-     {
-         Console.WriteLine("not enough balance to transfer.");
-     }
-     else
-     {
-         Balance -= amount;
-         recipient.Balance += amount;
-         Console.WriteLine($"Transfer ${amount} to {recipient.FirstName} {recipient.LastName} successful.");
-     }
- }
+        public void ACdeposit(decimal deamount)
+        {
+            if (deamount <= 0)
+            {
+                Console.WriteLine("Deposit amount failed. Must be more than 0");
+            }
+            else
+            {
+                Balance += (double)deamount;
+                Console.WriteLine("Amount deposited successfully");
+            }
+        }
 
+        public void ACwithdraw(decimal wiamount)
+        {
+            if (Balance < (double)wiamount)
+            {
+                Console.WriteLine("Not enough cash in your account!");
+            }
+            else
+            {
+                Balance -= (double)wiamount;
+                Console.WriteLine("Money withdrawn successfully");
+            }
+        }
+
+        public void transfer(Customer recipient, double amount)
+        {
+            if (amount <= 0)
+            {
+                Console.WriteLine("transfer amount must be more than 0.");
+            }
+            else if (Balance < amount)
+            {
+                Console.WriteLine("not enough balance to transfer.");
+            }
+            else
+            {
+                Balance -= amount;
+                recipient.Points += amount * 0.1;
+                Console.WriteLine($"Transfer ${amount} to {recipient.FirstName} {recipient.LastName} successful.");
+            }
+        }
+
+       
+        public void ConvertPointsToDollars(double pointsToConvert)
+        {
+            if (pointsToConvert <= Points)
+            {
+                double dollars = pointsToConvert / 0.1;
+                Balance += dollars;
+                Points -= pointsToConvert;
+                Console.WriteLine($"Converted {pointsToConvert} points to ${dollars}");
+            }
+            else
+            {
+                Console.WriteLine("Not enough points to convert.");
+            }
+        }
     }
 
     internal class Program
@@ -77,7 +96,8 @@ public void ACwithdraw(decimal wiamount)
                 Console.WriteLine("1 - Show balance");
                 Console.WriteLine("2 - Deposit credit");
                 Console.WriteLine("3 - Withdraw credit");
-                 Console.WriteLine("4 - Tranfer between accounts");
+                Console.WriteLine("4 - Transfer between accounts");
+                Console.WriteLine("5 - Point System");
             }
 
             void ShowBalance(Customer current)
@@ -157,20 +177,20 @@ public void ACwithdraw(decimal wiamount)
                     case 1:
                         ShowBalance(currentCustomer);
                         break;
-                     case 2;
+                    case 2:
                         Console.WriteLine("Enter the deposit amount");
                         decimal deamount = decimal.Parse(Console.ReadLine());
                         currentUser.ACdeposit(deamount);
                         break;
-                     case 3;
-                        Console.WriteLine("Enter withdrawl amount");
+                    case 3:
+                        Console.WriteLine("Enter withdrawal amount");
                         decimal wiamount = decimal.Parse(Console.ReadLine());
                         currentUser.ACwithdraw(wiamount);
                         break;
                     case 4:
                         Console.WriteLine("Enter recipient's account number:");
                         int recipientAccountNumber = int.Parse(Console.ReadLine());
-                        Customer recipient = customers.FirstOrDefault(owner => owner.AccountNumber == recipientAccountNumber);//lambda expression
+                        Customer recipient = customers.FirstOrDefault(owner => owner.AccountNumber == recipientAccountNumber);
                         if (recipient != null)
                         {
                             Console.WriteLine("Enter transfer amount:");
@@ -182,8 +202,11 @@ public void ACwithdraw(decimal wiamount)
                             Console.WriteLine("Recipient account not found.");
                         }
                         break;
-                        //case 2 ,3 and 4 done by omar ;)
-                        //jojo add case 5 (points system).
+                    case 5:
+                        Console.WriteLine("Enter the number of points to convert to dollars:");
+                        double pointsToConvert = double.Parse(Console.ReadLine());
+                        currentUser.ConvertPointsToDollars(pointsToConvert);
+                        break;
                     default:
                         choice = 0;
                         break;
