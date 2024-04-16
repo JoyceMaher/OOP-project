@@ -75,7 +75,7 @@ namespace OOP_Project
         {
             if (pointsToConvert <= Points)
             {
-                double dollars = pointsToConvert / 0.1;
+                double dollars = pointsToConvert / 10;
                 Balance += dollars;
                 Points -= pointsToConvert;
                 Console.WriteLine($"Converted {pointsToConvert} points to ${dollars}");
