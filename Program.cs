@@ -119,7 +119,9 @@ namespace OOP_Project
                 Console.WriteLine("2 - Deposit credit");
                 Console.WriteLine("3 - Withdraw credit");
                 Console.WriteLine("4 - Transfer between accounts");
-                Console.WriteLine("5 - Point System");
+                Console.WriteLine("5 - Point System(Points to dollars)");
+                Console.WriteLine("5 - Point System(Dollars to points)");
+
             }
 
             void ShowBalance(Customer current)
