@@ -85,6 +85,27 @@ namespace OOP_Project
                 Console.WriteLine("Not enough points to convert.");
             }
         }
+        public void ConvertDollarsToPoints(double dollarsToConvert)
+            {
+                if (dollarsToConvert <= 0)
+                {
+                    Console.WriteLine("Invalid dollar amount to convert.");
+                }
+                else
+                {
+                    double points = dollarsToConvert * 10; 
+                    if (points <= Balance)
+                    {
+                        Balance -= points;
+                        Points += points;
+                        Console.WriteLine($"Converted ${dollarsToConvert} to {points} points.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough points to convert.");
+                    }
+            }
+}
     }
 
     internal class Program
@@ -207,6 +228,17 @@ namespace OOP_Project
                         Console.WriteLine("Enter the number of points to convert to dollars:");
                         double pointsToConvert = double.Parse(Console.ReadLine());
                         currentUser.ConvertPointsToDollars(pointsToConvert);
+                        break;
+                    case 6:
+                        Console.WriteLine("Enter the number of dollars to convert to points:");
+                        if (double.TryParse(Console.ReadLine(), out double dollarstoconvert))
+                        {
+                            currentUser.ConvertDollarsToPoints(dollarstoconvert);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input. Please enter a valid dollar amount.");
+                        }
                         break;
                     default:
                         choice = 0;
